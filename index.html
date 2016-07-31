@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/jquery.bootgrid.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  		<div class="container">
+			<div class="navbar-header">
+      			<a class="navbar-brand">Назаров Даниил Андреевич</a>
+    		</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      		<ul class="nav navbar-nav">
+        		<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Меню<b class="caret"></b></a>
+          			<ul class="dropdown-menu">
+            			<li id="table-btn"><a href="#">Таблица</a></li>
+            			<li id="about-btn"><a href="#">О себе</a></li>
+          			</ul>
+        		</li>
+      		</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div id="div1">
+			<form class="form-inline" id="input-form">
+				<div class="form-group">
+					<label for="inputID">ID:</label>
+					<input type="tel" class="form-control" id="inputID">
+				</div>
+				<div class="form-group">
+					<label for="inputName">Наименование:</label>
+					<input type="text" class="form-control" id="inputName">
+				</div>
+				<div class="form-group">
+					<label for="inputType">Тип:</label>
+					<input type="text" class="form-control" id="inputType">
+				</div>
+				<button type="submit" class="btn btn-default">Add</button>
+			</form>
+			<br>
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3>Станции</h3></div>
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<th data-column-id="id" datatype="numeric">ID</th>
+							<th data-column-id="name">Наименование</th>
+							<th data-column-id="type">Тип</th>
+						</thead>
+						<tbody id="table-body">
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="panel-footer">
+					<button class="btn btn-default" id="clear-btn">Очистить</button>
+				</div>
+			</div>
+		</div>
+		<div id="div2">
+			<h3>Назаров Даниил Андреевич</h3>
+			<p>Московский государственный университет путей сообщения 2016</p>
+			<h4>Навыки:</h4>
+			<ul>
+				<li>Базовые знания HTML, CSS and JS</li>
+				<li>Bootstrap-3, Jquery</li>
+				<li>Гуру VB.Net :-)</li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.bootgrid.fa.min.js"></script>
+	<script src="js/jquery.bootgrid.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#div1").show();
+			$("#div2").hide();
+			
+			$("#table-btn").on("click", function() {
+				$("#div2").hide();
+				$("#div1").show("slow");
+			});
+			$("#about-btn").on("click", function(){
+				$("#div1").hide();
+				$("#div2").show("slow");
+			});
+
+			$("#input-form").submit(function() {
+				$("<tr><td>" + $("#inputID").val() + "</td><td>"+ $("#inputName").val() + "</td><td>" + $("#inputType").val() + "</td></tr>").appendTo("#table-body");
+			});
+
+			$("#clear-btn").on("click", function(){
+				$("#table-body").empty();
+			})
+		})
+		
+	</script>
+</body>
+</html>
