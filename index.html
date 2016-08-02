@@ -9,7 +9,6 @@
 <body>
 	<script src="js/jquery-3.1.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.bootgrid.fa.min.js"></script>
 	<script src="js/jquery.bootgrid.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -25,7 +24,8 @@
 				$("#div2").show("slow");
 			});
 
-			$("#input-form").submit(function() {
+			$("#input-form").submit(function(e) {
+				e.preventDefault();
 				var row = {
 					id: $("#inputID").val(),
 					name: $("#inputName").val(),
