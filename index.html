@@ -45,7 +45,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading"><h3>Станции</h3></div>
 				<div class="panel-body">
-					<table class="table">
+					<table class="table" id="bootgrid-table">
 						<thead>
 							<th data-column-id="id" datatype="numeric">ID</th>
 							<th data-column-id="name">Наименование</th>
@@ -91,14 +91,33 @@
 			});
 
 			$("#input-form").submit(function() {
-				$("<tr><td>" + $("#inputID").val() + "</td><td>"+ $("#inputName").val() + "</td><td>" + $("#inputType").val() + "</td></tr>").appendTo("#table-body");
+				var row = [{
+					id: $("#inputID").val(),
+					name: $("#inputName").val(),
+					type: $("#inputType").val()
+				}];
+
+				$("#bootgrid-table").bootgrid("append",row);
+
+				$("#input-form")[0].reset();
 			});
 
 			$("#clear-btn").on("click", function(){
-				$("#table-body").empty();
-			})
-		})
+				$("#bootgrid-table").bootgrid("clear");
+			});
+			$("#bootgrid-table").bootgrid();
+			
+
+			var exampleRows = [];
+			exampleRows.push({id: 0, name: "Москва", type: "Тип 1"});
+			exampleRows.push({id: 1, name: "Ленинград", type: "Тип 1"})			
+			exampleRows.push({id: 2, name: "Тверь", type: "Тип 2"})
+			exampleRows.push({id: 3, name: "Вышний Волочек", type: "Тип 3"})
+			exampleRows.push({id: 4, name: "Бологое", type: "Тип 3"})			
 		
+			$("#bootgrid-table").bootgrid("append",exampleRows);
+
+		});
 	</script>
 </body>
 </html>
