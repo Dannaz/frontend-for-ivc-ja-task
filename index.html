@@ -7,6 +7,53 @@
 	<link rel="stylesheet" href="css/jquery.bootgrid.min.css">
 </head>
 <body>
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.bootgrid.fa.min.js"></script>
+	<script src="js/jquery.bootgrid.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#div1").show();
+			$("#div2").hide();
+			
+			$("#table-btn").on("click", function() {
+				$("#div2").hide();
+				$("#div1").show("slow");
+			});
+			$("#about-btn").on("click", function(){
+				$("#div1").hide();
+				$("#div2").show("slow");
+			});
+
+			$("#input-form").submit(function() {
+				var row = {
+					id: $("#inputID").val(),
+					name: $("#inputName").val(),
+					type: $("#inputType").val()
+				};
+
+				$("#bootgrid-table").bootgrid("append",[row]);
+
+				$("#input-form")[0].reset();
+			});
+
+			$("#clear-btn").on("click", function(){
+				$("#bootgrid-table").bootgrid("clear");
+			});
+			$("#bootgrid-table").bootgrid();
+			
+
+			var exampleRows = [];
+			exampleRows.push({id: 0, name: "Москва", type: "Тип 1"});
+			exampleRows.push({id: 1, name: "Ленинград", type: "Тип 1"})			
+			exampleRows.push({id: 2, name: "Тверь", type: "Тип 2"})
+			exampleRows.push({id: 3, name: "Вышний Волочек", type: "Тип 3"})
+			exampleRows.push({id: 4, name: "Бологое", type: "Тип 3"})			
+		
+			$("#bootgrid-table").bootgrid("append",exampleRows);
+
+		});
+	</script>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
   		<div class="container">
 			<div class="navbar-header">
@@ -72,52 +119,6 @@
 			</ul>
 		</div>
 	</div>
-	<script src="js/jquery-3.1.0.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.bootgrid.fa.min.js"></script>
-	<script src="js/jquery.bootgrid.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#div1").show();
-			$("#div2").hide();
-			
-			$("#table-btn").on("click", function() {
-				$("#div2").hide();
-				$("#div1").show("slow");
-			});
-			$("#about-btn").on("click", function(){
-				$("#div1").hide();
-				$("#div2").show("slow");
-			});
-
-			$("#input-form").submit(function() {
-				var row = [{
-					id: $("#inputID").val(),
-					name: $("#inputName").val(),
-					type: $("#inputType").val()
-				}];
-
-				$("#bootgrid-table").bootgrid("append",row);
-
-				$("#input-form")[0].reset();
-			});
-
-			$("#clear-btn").on("click", function(){
-				$("#bootgrid-table").bootgrid("clear");
-			});
-			$("#bootgrid-table").bootgrid();
-			
-
-			var exampleRows = [];
-			exampleRows.push({id: 0, name: "Москва", type: "Тип 1"});
-			exampleRows.push({id: 1, name: "Ленинград", type: "Тип 1"})			
-			exampleRows.push({id: 2, name: "Тверь", type: "Тип 2"})
-			exampleRows.push({id: 3, name: "Вышний Волочек", type: "Тип 3"})
-			exampleRows.push({id: 4, name: "Бологое", type: "Тип 3"})			
-		
-			$("#bootgrid-table").bootgrid("append",exampleRows);
-
-		});
-	</script>
+	
 </body>
 </html>
